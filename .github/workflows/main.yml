@@ -57,6 +57,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            echo ${{ secrets.USER_PASSWORD }} | sudo docker pull oxiplegatz/infra-actions
-            echo ${{ secrets.USER_PASSWORD }} | sudo docker stop $(sudo docker ps -a -q)
-            echo ${{ secrets.USER_PASSWORD }} | sudo docker run --rm -d -p 5000:5000 oxiplegatz/infra-actions
+            echo ${{ secrets.USER_PASSWORD }}
+            sudo -S docker pull oxiplegatz/infra-actions
+            sudo -S docker stop $(sudo docker ps -a -q)
+            sudo -S docker run --rm -d -p 5000:5000 oxiplegatz/infra-actions
